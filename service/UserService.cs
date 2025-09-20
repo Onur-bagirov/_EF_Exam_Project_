@@ -141,7 +141,7 @@ namespace _EF_Exam_Project_.service
 
             while (Attempts > 0)
             {
-                Console.Write("\n\t Enter app code : ");
+                Console.Write("\n\t Enter confirmation code : ");
                 string ForgetConfirmationCode = Console.ReadLine();
 
                 if (ForgetConfirmationCode == RandomCode_)

@@ -13,6 +13,7 @@ namespace _EF_Exam_Project_.mainPart
             var bookService = new BookService(db);
             var orderService = new OrderService(db);
             var orderBookService = new OrderBookService(db);
+            var currentUser = db.Users.FirstOrDefault();
 
             while (true)
             {
@@ -46,7 +47,7 @@ namespace _EF_Exam_Project_.mainPart
                             BookPart.BookMenu(bookService, categoryService, authorService);
                             break;
                         case "4":
-                            OrderPart.OrderMenu(orderService, orderBookService, bookService);
+                            OrderPart.OrderMenu(orderService, orderBookService, bookService,currentUser);
                             break;
                         case "5":
                             Console.Clear();

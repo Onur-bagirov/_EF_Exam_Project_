@@ -1,4 +1,5 @@
 ﻿using _EF_Exam_Project_.context;
+using _EF_Exam_Project_.email;
 using _EF_Exam_Project_.exception;
 using _EF_Exam_Project_.mainPart;
 using _EF_Exam_Project_.service;
@@ -52,13 +53,6 @@ namespace EF_Finally_Exam_Project_
                                 string In_Password = Console.ReadLine();
 
                                 Us.SignIn(In_Username, In_Password);
-
-                                var _user = Db.Users.FirstOrDefault(x => x.Username == In_Username && x.Passsword == In_Password && !x.IsDeleted);
-                                var os = new OrderService(Db);
-                                var obs = new OrderBookService(Db);
-                                var bs = new BookService(Db);
-
-                                OrderPart.OrderMenu(os, obs, bs, _user);
 
                                 Thread.Sleep(2000);
                                 break;
@@ -118,11 +112,19 @@ namespace EF_Finally_Exam_Project_
                                     if (Up_Username.Length < 5)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.Write("\n\t\t Error ! Userame must have at least 5 characters ! \n");
+                                        Console.Write("\n\t\t Error ! Username must have at least 5 characters ! \n");
                                         Console.ResetColor();
                                     }
+                                    else if (Db.Users.Any(u => u.Username == Up_Username && !u.IsDeleted))
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.Write("\n\t\t Error ! This username is already taken ! \n");
+                                        Console.ResetColor();
+                                        Up_Username = "";
+                                    }
 
-                                } while (Up_Username.Length < 5);
+                                } while (string.IsNullOrEmpty(Up_Username));
+
 
                                 string Up_Email;
 
@@ -133,15 +135,21 @@ namespace EF_Finally_Exam_Project_
                                     Console.ResetColor();
                                     Up_Email = Console.ReadLine();
 
-
                                     if (!Up_Email.Contains("@") || !Up_Email.Contains(".") || Up_Email.Length < 6)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.Write("\n\t\t Error ! Incorrect email ! \n");
                                         Console.ResetColor();
                                     }
+                                    else if (Db.Users.Any(u => u.Email == Up_Email && !u.IsDeleted))
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.Write("\n\t\t Error ! This email is already registered ! \n");
+                                        Console.ResetColor();
+                                        Up_Email = "";
+                                    }
 
-                                } while (!Up_Email.Contains("@") || !Up_Email.Contains(".") || Up_Email.Length < 6);
+                                } while (string.IsNullOrEmpty(Up_Email));
 
                                 string AppCode;
 

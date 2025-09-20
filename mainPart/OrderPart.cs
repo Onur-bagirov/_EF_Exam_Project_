@@ -31,8 +31,22 @@ namespace _EF_Exam_Project_.mainPart
                     switch (Choice)
                     {
                         case "1":
-                            Console.Write("\n\t Enter book id : ");
-                            int BId = int.Parse(Console.ReadLine());
+                            int BId;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter book id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out BId) || BId <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    BId = -1;
+                                }
+                            } while (BId <= 0);
 
                             var Book = bookService.ById(BId);
 
@@ -49,7 +63,7 @@ namespace _EF_Exam_Project_.mainPart
                                 };
 
                                 var Order = new Order { OrderDateTime = DateTime.Now };
-                                orderService.Add(Order);
+                                orderService.Add(Order,_user);
 
                                 bool CheckOr = orderBookService.CreateOrder(Order.ID, new List<int> { BId });
 
@@ -73,10 +87,26 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                                 Thread.Sleep(1500);
                             }
+                            Console.Clear();
                             break;
                         case "2":
-                            Console.Write("\n\t Enter order id : ");
-                            int OId = int.Parse(Console.ReadLine());
+                            int OId;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter order id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out OId) || OId <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    OId = -1;
+                                }
+                            } while (OId <= 0);
+
 
                             bool CheckOR = orderService.Delete(OId);
 
@@ -101,22 +131,46 @@ namespace _EF_Exam_Project_.mainPart
                             }
 
                             Thread.Sleep(3000);
+                            Console.Clear();
                             break;
                         case "4":
-                            Console.Write("\n\t Enter order id : ");
-                            var Oid = orderService.ById(int.Parse(Console.ReadLine()));
+                            Order? Oid = null;
+                            int TempId;
+
+                            while (true)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter order id : ");
+                                Console.ResetColor();
+
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out TempId) || TempId <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error! Please enter a valid positive number!\n");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            Oid = orderService.ById(TempId);
 
                             if (Oid != null)
                             {
-                                Console.WriteLine($"{Oid.ID} - {Oid.OrderDateTime}");
+                                Console.WriteLine($"\n\t Order ID : {Oid.ID}, Price : {Oid.Price}");
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("\n\t\t Order not found ! \n");
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\n\t\t Error! Order not found!\n");
                                 Console.ResetColor();
                             }
+
                             Thread.Sleep(3000);
+                            Console.Clear();
                             break;
                         case "5": 
                             return;

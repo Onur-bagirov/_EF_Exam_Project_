@@ -37,7 +37,7 @@ namespace _EF_Exam_Project_.mainPart
 
                             do
                             {
-                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
                                 Console.Write("\n\t Enter name (Min 3 characters) : ");
                                 Console.ResetColor();
                                 Name = Console.ReadLine();
@@ -55,7 +55,7 @@ namespace _EF_Exam_Project_.mainPart
 
                             do
                             {
-                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
                                 Console.Write("\n\t Enter surname  (Min 5 characters) : ");
                                 Console.ResetColor();
                                 Surname = Console.ReadLine();
@@ -68,7 +68,6 @@ namespace _EF_Exam_Project_.mainPart
                                 }
                             }
                             while (Surname.Length < 5);
-
 
                             bool CheckAdd = service.Add(new Author { Name = Name, Surname = Surname });
 
@@ -85,10 +84,25 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
                         case "2":
-                            Console.Write("\n\t Enter author id : ");
-                            int IdDel = int.Parse(Console.ReadLine());
+                            int IdDel;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter author id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out IdDel) || IdDel <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    IdDel = -1;
+                                }
+                            } while (IdDel <= 0);
 
                             bool CheckDel = service.Delete(IdDel);
 
@@ -105,10 +119,26 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
                         case "3":
-                            Console.Write("\n\t Enter author id : ");
-                            int UpId = int.Parse(Console.ReadLine());
+                            int UpId;
+
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter author id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out UpId) || UpId <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    UpId = -1;
+                                }
+                            } while (UpId <= 0);
 
                             var Update = service.ById(UpId);
 
@@ -168,6 +198,7 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
                         case "4":
                             foreach (var x in service.GelAll())
@@ -175,10 +206,29 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.WriteLine($"\n\t {x.ID} - {x.Name} {x.Surname}");
                             }
                             Thread.Sleep(3000);
+                            Console.Clear();
                             break;
                         case "5":
-                            Console.Write("\n\t Enter id : ");
-                            var IdUp= service.ById(int.Parse(Console.ReadLine()));
+                            int IdUpValue;
+
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out IdUpValue) || IdUpValue <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    IdUpValue = -1;
+                                }
+                            } while (IdUpValue <= 0);
+
+                            var IdUp = service.ById(IdUpValue);
+
                             if (IdUp != null)
                             {
                                 Console.WriteLine($"\n\t {IdUp.ID} - {IdUp.Name} {IdUp.Surname}");
@@ -190,6 +240,7 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(3000);
+                            Console.Clear();
                             break;
                         case "6": 
                             return;

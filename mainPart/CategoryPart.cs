@@ -67,10 +67,25 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
                         case "2":
-                            Console.Write("\n\t Enter category id : ");
-                            int Id = int.Parse(Console.ReadLine());
+                            int Id;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter category id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out Id) || Id <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    Id = -1;
+                                }
+                            } while (Id <= 0);
 
                             bool CheckDel = service.Delete(Id);
 
@@ -87,10 +102,26 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
                         case "3":
-                            Console.Write("\n\t Enter category id : ");
-                            int UpId = int.Parse(Console.ReadLine());
+                            int UpId;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter category id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out UpId) || UpId <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    UpId = 0;
+                                }
+                            } while (UpId <= 0);
+
 
                             var Update = service.ById(UpId);
 
@@ -134,6 +165,7 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
                         case "4":
                             Console.WriteLine("\n\t All Categories : ");
@@ -143,10 +175,26 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.WriteLine($"\n\t {x.ID} - {x.Name}");
                             }
                             Thread.Sleep(3000);
+                            Console.Clear();
                             break;
                         case "5":
-                            Console.Write("\n\t Enter id : ");
-                            var Check = service.ById(int.Parse(Console.ReadLine()));
+                            int id;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out id) || id <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error! Please enter a valid positive number!\n");
+                                    Console.ResetColor();
+                                }
+                            } while (id <= 0);
+
+                            var Check = service.ById(id);
 
                             if (Check != null)
                             {
@@ -159,6 +207,7 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(3000);
+                            Console.Clear();
                             break;
                         case "6": 
                             return;

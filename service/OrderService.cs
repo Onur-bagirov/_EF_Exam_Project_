@@ -9,7 +9,7 @@ namespace _EF_Exam_Project_.service
         {
             DataBase = database;
         }
-        public bool Add(Order order)
+        public bool Add(Order order,User user)
         {
             if(order == null)
             {
@@ -20,6 +20,7 @@ namespace _EF_Exam_Project_.service
                 order.Create = DateTime.Now;
                 order.Update = DateTime.Now;
                 order.IsDeleted = false;
+                order.ID_User = user.ID;
 
                 DataBase.Orders.Add(order);
                 DataBase.SaveChanges();
@@ -46,7 +47,7 @@ namespace _EF_Exam_Project_.service
             if (Order != null)
             {
                 Order.Price = order.Price;
-                Order.ID_User = null;
+                Order.ID_User = order.ID_User;
                 Order.Update = DateTime.Now;
                 DataBase.SaveChanges();
             }

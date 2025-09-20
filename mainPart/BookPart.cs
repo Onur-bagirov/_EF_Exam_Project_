@@ -41,24 +41,52 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                                 BTitle_ = Console.ReadLine();
 
-                                if(BTitle_.Length < 3)
+                                if (BTitle_.Length < 3)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.Write("\n\t\t Error ! Title maust have at least 3 characters ! \n");
+                                    Console.Write("\n\t\t Error ! Title must have at least 3 characters ! \n");
                                     Console.ResetColor();
                                 }
                             }
                             while (BTitle_.Length < 3);
 
-                            Console.Write("\n\t Enter author id : ");
-                            int AId_ = int.Parse(Console.ReadLine());
+                            int AId_;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter author id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
 
-                            Console.Write("\n\t Enter category id : ");
-                            int CId_ = int.Parse(Console.ReadLine());
+                                if (!int.TryParse(input, out AId_) || AId_ <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    AId_ = -1;
+                                }
+                            } while (AId_ <= 0);
+
+                            int CId_;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter category id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out CId_) || CId_ <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    CId_ = -1;
+                                }
+                            } while (CId_ <= 0);
 
                             bool CheckAdd = service.Add(new Book { Title = BTitle_, ID_Author = AId_, ID_Category = CId_ });
 
-                            if(CheckAdd)
+                            if (CheckAdd)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.Write("\n\t\t Book added successfully ! \n");
@@ -71,14 +99,30 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
+
                         case "2":
-                            Console.Write("\n\t Enter book id : ");
-                            int IdDel = int.Parse(Console.ReadLine());
+                            int IdDel;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter book id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out IdDel) || IdDel <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    IdDel = -1;
+                                }
+                            } while (IdDel <= 0);
 
                             bool CheckDel = service.Delete(IdDel);
 
-                            if(CheckDel)
+                            if (CheckDel)
                             {
                                 Console.ForegroundColor = ConsoleColor.Green;
                                 Console.Write("\n\t\t Book deleted successfully ! \n");
@@ -91,10 +135,26 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
+
                         case "3":
-                            Console.Write("\n\t Enter book id : ");
-                            int UpId = int.Parse(Console.ReadLine());
+                            int UpId;
+                            do
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter book id : ");
+                                Console.ResetColor();
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out UpId) || UpId <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
+                                    Console.ResetColor();
+                                    UpId = -1;
+                                }
+                            } while (UpId <= 0);
 
                             var Book = service.ById(UpId);
 
@@ -110,7 +170,7 @@ namespace _EF_Exam_Project_.mainPart
                                     if (Book.Title.Length < 3)
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.Write("\n\t\t Error ! Title maust have at least 3 characters ! \n");
+                                        Console.Write("\n\t\t Error ! Title must have at least 3 characters ! \n");
                                         Console.ResetColor();
                                     }
                                 }
@@ -118,7 +178,7 @@ namespace _EF_Exam_Project_.mainPart
 
                                 bool CheckUp = service.Update(UpId, Book);
 
-                                if(CheckUp)
+                                if (CheckUp)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Green;
                                     Console.Write("\n\t\t Book updated successfully ! \n");
@@ -138,35 +198,74 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
+
                         case "4":
                             foreach (var x in service.GelAll())
                             {
                                 Console.WriteLine($"\n\t {x.ID} - {x.Title}");
                             }
                             Thread.Sleep(3000);
+                            Console.Clear();
                             break;
+
                         case "5":
-                            Console.Write("\n\t Enter id : ");
-                            var Id = service.ById(int.Parse(Console.ReadLine()));
+                            Book? Id = null;
+                            int tempId;
+                            int attempts = 0;
+
+                            while (attempts < 2 && Id == null)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGray;
+                                Console.Write("\n\t Enter id : ");
+                                Console.ResetColor();
+
+                                string input = Console.ReadLine();
+
+                                if (!int.TryParse(input, out tempId))
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error! You must enter a number!\n");
+                                    Console.ResetColor();
+
+                                    attempts++;
+                                    continue;
+                                }
+                                if (tempId <= 0)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Error! Please enter a valid positive number!\n");
+                                    Console.ResetColor();
+                                    break;
+                                }
+
+                                Id = service.ById(tempId);
+
+                                if (Id == null)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\n\t\t Item not found in database!\n");
+                                    Console.ResetColor();
+                                }
+
+                                break;
+                            }
 
                             if (Id != null)
                             {
-                                Console.WriteLine($"{Id.ID} - {Id.Title}");
+                                Console.WriteLine($"\n\t {Id.ID} - {Id.Title}");
                             }
-                            else
-                            {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("\n\t\t Book not found ! \n");
-                                Console.ResetColor();
-                            }
+
                             Thread.Sleep(3000);
+                            Console.Clear();
                             break;
-                        case "6": 
+
+                        case "6":
                             return;
                     }
                 }
-                catch(ChoiceException ex)
+                catch (ChoiceException ex)
                 {
                     Console.Write(ex.Message);
                 }
