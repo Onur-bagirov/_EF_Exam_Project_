@@ -1,0 +1,63 @@
+﻿using _EF_Exam_Project_.context;
+using _EF_Exam_Project_.entities;
+namespace _EF_Exam_Project_.service
+{
+    public class OrderService
+    {
+        private BookShopDataBase DataBase;
+        public OrderService(BookShopDataBase database)
+        {
+            DataBase = database;
+        }
+        public bool Add(Order order)
+        {
+            if(order == null)
+            {
+                return false;
+            }
+            else
+            {
+                order.Create = DateTime.Now;
+                order.Update = DateTime.Now;
+                order.IsDeleted = false;
+
+                DataBase.Orders.Add(order);
+                DataBase.SaveChanges();
+                return true;
+            }
+        }
+        public bool Delete(int id)
+        {
+            var Order = DataBase.Orders.FirstOrDefault(x => x.ID == id);
+
+            if(Order != null)
+            {
+                Order.IsDeleted = true;
+                Order.Delete = DateTime.Now;
+                DataBase.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public void Update(Order order)
+        {
+            var Order = DataBase.Orders.FirstOrDefault(x => x.ID == order.ID);
+
+            if (Order != null)
+            {
+                Order.Price = order.Price;
+                Order.ID_User = null;
+                Order.Update = DateTime.Now;
+                DataBase.SaveChanges();
+            }
+        }
+        public Order ById(int id)
+        {
+            return DataBase.Orders.FirstOrDefault(x => x.ID == id && !x.IsDeleted);
+        }
+        public List<OrderBook> GetAll()
+        {
+            return DataBase.OrderBook.Where(x => !x.IsDeleted).ToList();
+        }
+    }
+}
