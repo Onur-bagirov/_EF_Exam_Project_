@@ -18,13 +18,13 @@ namespace _EF_Exam_Project_.service
             var Code_Random = new Random();
             return Code_Random.Next(100000, 1000000).ToString();
         }
-        public bool SignIn(string username, string password)
+        public User? SignIn(string username, string password)
         {
-            if (DataBase.Users.Any(x =>x.Username == username && x.Passsword == password))
+            var user = DataBase.Users.FirstOrDefault(x => x.Username == username && x.Passsword == password);
+
+            if (user != null)
             {
-                MainPart.MainStart();
-                Thread.Sleep(2000);
-                return true;
+                return user;
             }
             else
             {
@@ -32,7 +32,7 @@ namespace _EF_Exam_Project_.service
                 Console.WriteLine("\n\t\t Error ! Incorrect username or password ! \n");
                 Console.ResetColor();
                 Thread.Sleep(2000);
-                return false;
+                return null;
             }
         }
         public bool SignUp(string surname, string name, string username, string email, string appcode, string password)

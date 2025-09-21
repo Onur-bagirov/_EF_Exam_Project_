@@ -1,11 +1,12 @@
 ﻿using _EF_Exam_Project_.context;
+using _EF_Exam_Project_.entities;
 using _EF_Exam_Project_.exception;
 using _EF_Exam_Project_.service;
 namespace _EF_Exam_Project_.mainPart
 {
     public class MainPart
     {
-        public static void MainStart()
+        public static void MainStart(User currentUser)
         {
             using var db = new BookShopDataBase();
             var categoryService = new CategoryService(db);
@@ -13,7 +14,6 @@ namespace _EF_Exam_Project_.mainPart
             var bookService = new BookService(db);
             var orderService = new OrderService(db);
             var orderBookService = new OrderBookService(db);
-            var currentUser = db.Users.FirstOrDefault();
 
             while (true)
             {

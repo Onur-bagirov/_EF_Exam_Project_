@@ -1,5 +1,6 @@
 ﻿using _EF_Exam_Project_.context;
 using _EF_Exam_Project_.email;
+using _EF_Exam_Project_.entities;
 using _EF_Exam_Project_.exception;
 using _EF_Exam_Project_.mainPart;
 using _EF_Exam_Project_.service;
@@ -52,7 +53,15 @@ namespace EF_Finally_Exam_Project_
                                 Console.ResetColor();
                                 string In_Password = Console.ReadLine();
 
-                                Us.SignIn(In_Username, In_Password);
+                                var user = Us.SignIn(In_Username, In_Password);
+
+                                if (user != null)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+                                    Console.WriteLine($"\n\t Welcome {user.Username} !\n");
+                                    Console.ResetColor();
+                                    MainPart.MainStart(user);
+                                }
 
                                 Thread.Sleep(2000);
                                 break;
