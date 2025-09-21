@@ -32,6 +32,7 @@ namespace _EF_Exam_Project_.mainPart
                     {
                         case "1":
                             int BId;
+                            Console.Clear();
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -87,10 +88,10 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                                 Thread.Sleep(1500);
                             }
-                            Console.Clear();
                             break;
                         case "2":
                             int OId;
+                            Console.Clear();
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -131,9 +132,9 @@ namespace _EF_Exam_Project_.mainPart
                             }
 
                             Thread.Sleep(3000);
-                            Console.Clear();
                             break;
                         case "4":
+                            Console.Clear();
                             Order? Oid = null;
                             int TempId;
 
@@ -170,7 +171,6 @@ namespace _EF_Exam_Project_.mainPart
                             }
 
                             Thread.Sleep(3000);
-                            Console.Clear();
                             break;
                         case "5": 
                             return;

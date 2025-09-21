@@ -35,7 +35,7 @@ namespace _EF_Exam_Project_.mainPart
                     {
                         case "1":
                             string Name;
-
+                            Console.Clear();
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -67,10 +67,10 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
-                            Console.Clear();
                             break;
                         case "2":
                             int Id;
+                            Console.Clear();
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -102,10 +102,10 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
-                            Console.Clear();
                             break;
                         case "3":
                             int UpId;
+                            Console.Clear();
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -165,9 +165,9 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
-                            Console.Clear();
                             break;
                         case "4":
+                            Console.Clear();
                             Console.WriteLine("\n\t All Categories : ");
 
                             foreach (var x in service.GetAll())
@@ -175,10 +175,10 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.WriteLine($"\n\t {x.ID} - {x.Name}");
                             }
                             Thread.Sleep(3000);
-                            Console.Clear();
                             break;
                         case "5":
                             int id;
+                            Console.Clear();
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -207,7 +207,6 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(3000);
-                            Console.Clear();
                             break;
                         case "6": 
                             return;

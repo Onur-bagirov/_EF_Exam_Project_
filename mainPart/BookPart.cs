@@ -34,8 +34,10 @@ namespace _EF_Exam_Project_.mainPart
                         case "1":
                             string BTitle_;
 
+                                Console.Clear(); ;
                             do
                             {
+
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
                                 Console.Write("\n\t Enter book title : ");
                                 Console.ResetColor();
@@ -99,11 +101,11 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
-                            Console.Clear();
                             break;
 
                         case "2":
                             int IdDel;
+                            Console.Clear();
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -135,11 +137,11 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
-                            Console.Clear();
                             break;
 
                         case "3":
                             int UpId;
+                            Console.Clear();
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -198,19 +200,21 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
-                            Console.Clear();
                             break;
 
                         case "4":
+                            Console.Clear();
+
                             foreach (var x in service.GelAll())
                             {
                                 Console.WriteLine($"\n\t {x.ID} - {x.Title}");
                             }
                             Thread.Sleep(3000);
-                            Console.Clear();
                             break;
 
                         case "5":
+                            Console.Clear();
+
                             Book? Id = null;
                             int tempId;
                             int attempts = 0;
@@ -258,7 +262,6 @@ namespace _EF_Exam_Project_.mainPart
                             }
 
                             Thread.Sleep(3000);
-                            Console.Clear();
                             break;
 
                         case "6":

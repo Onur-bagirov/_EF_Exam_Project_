@@ -33,6 +33,8 @@ namespace _EF_Exam_Project_.mainPart
                     {
                         case "1":
 
+                            Console.Clear();
+
                             string Name;
 
                             do
@@ -84,9 +86,9 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
-                            Console.Clear();
                             break;
                         case "2":
+                            Console.Clear();
                             int IdDel;
                             do
                             {
@@ -119,9 +121,9 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(1500);
-                            Console.Clear();
                             break;
                         case "3":
+                            Console.Clear();
                             int UpId;
 
                             do
@@ -240,7 +242,6 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                             }
                             Thread.Sleep(3000);
-                            Console.Clear();
                             break;
                         case "6": 
                             return;
