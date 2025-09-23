@@ -130,7 +130,6 @@ namespace _EF_Exam_Project_.mainPart
                             {
                                 Console.WriteLine($"\n\t {x.ID} - {x.Price}");
                             }
-
                             Thread.Sleep(3000);
                             break;
                         case "4":
