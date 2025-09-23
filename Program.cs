@@ -1,6 +1,4 @@
 ﻿using _EF_Exam_Project_.context;
-using _EF_Exam_Project_.email;
-using _EF_Exam_Project_.entities;
 using _EF_Exam_Project_.exception;
 using _EF_Exam_Project_.mainPart;
 using _EF_Exam_Project_.service;
