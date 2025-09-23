@@ -35,14 +35,14 @@ namespace _EF_Exam_Project_.service
                 return null;
             }
         }
-        public bool SignUp(string surname, string name, string username, string email, string appcode, string password)
+        public bool SignUp(string surname, string name, string username, string email,string password)
         {
             string Random_Code = RandomCode();
 
             bool SentEmail = EmailService.Send
             (
-                senderemail: email,
-                apppassword: appcode,
+                senderemail: "onurrmoskowaa2008@gmail.com",
+                apppassword: "hyeeczeqwwjyegek",
                 receiveremail: email,
                 subject: "Your Confirmation Code",
                 body: $"Your confirmation code is : {Random_Code}"
@@ -100,7 +100,7 @@ namespace _EF_Exam_Project_.service
             Thread.Sleep(2000);
             return false;
         }
-        public bool ForgetPassword(string email, string appcode)
+        public bool ForgetPassword(string email)
         {
             var User = DataBase.Users.FirstOrDefault(x => x.Email == email);
 
@@ -116,8 +116,8 @@ namespace _EF_Exam_Project_.service
 
             bool SentEmail = EmailService.Send
             (
-                senderemail: email,
-                apppassword: appcode,
+                senderemail: "onurrmoskowaa2008@gmail.com",
+                apppassword: "hyeeczeqwwjyegek",
                 receiveremail: User.Email,
                 subject: "Password Reset Code",
                 body: $"Your password reset code is : {RandomCode_}"

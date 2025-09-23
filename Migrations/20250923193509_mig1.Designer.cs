@@ -12,7 +12,7 @@ using _EF_Exam_Project_.context;
 namespace _EF_Exam_Project_.Migrations
 {
     [DbContext(typeof(BookShopDataBase))]
-    [Migration("20250920200234_mig1")]
+    [Migration("20250923193509_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -144,6 +144,9 @@ namespace _EF_Exam_Project_.Migrations
 
                     b.Property<DateTime>("Delete")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("ID_Book")
+                        .HasColumnType("int");
 
                     b.Property<int>("ID_User")
                         .HasColumnType("int");

@@ -5,6 +5,11 @@ namespace _EF_Exam_Project_.mainPart
 {
     public class OrderPart
     {
+        private static Random Code_Random = new Random();
+        public static int Price()
+        {
+            return Code_Random.Next(10, 21); 
+        }
         public static void OrderMenu(OrderService orderService, OrderBookService orderBookService, BookService bookService, User _user)
         {
             while (true)
@@ -28,6 +33,7 @@ namespace _EF_Exam_Project_.mainPart
 
                 try
                 {
+
                     switch (Choice)
                     {
                         case "1":
@@ -47,12 +53,14 @@ namespace _EF_Exam_Project_.mainPart
                                     Console.ResetColor();
                                     BId = -1;
                                 }
-                            } while (BId <= 0);
+                            } while (BId <= 0);                       
+
 
                             var Book = bookService.ById(BId);
 
                             if (Book != null)
                             {
+                                Book.Price = Price();
                                 var newOrder = new Order
                                 {
                                     OrderDateTime = DateTime.Now,
@@ -60,13 +68,12 @@ namespace _EF_Exam_Project_.mainPart
                                     Price = Book.Price,
                                     Create = DateTime.Now,
                                     Update = DateTime.Now,
-                                    IsDeleted = false
+                                    IsDeleted = false,
+                                    ID_Book = Book.ID
                                 };
+                                orderService.Add(newOrder,_user);
 
-                                var Order = new Order { OrderDateTime = DateTime.Now };
-                                orderService.Add(Order,_user);
-
-                                bool CheckOr = orderBookService.CreateOrder(Order.ID, new List<int> { BId });
+                                bool CheckOr = orderBookService.CreateOrder(newOrder.ID, new List<int> { BId });
 
                                 if (CheckOr)
                                 {
@@ -88,6 +95,7 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                                 Thread.Sleep(1500);
                             }
+                            Thread.Sleep(1500);
                             break;
                         case "2":
                             int OId;
@@ -128,13 +136,13 @@ namespace _EF_Exam_Project_.mainPart
                         case "3":
                             foreach (var x in orderService.GetAll())
                             {
-                                Console.WriteLine($"\n\t {x.ID} - {x.Price}");
+                                var book = bookService.ById(x.ID_Book);
+                                Console.WriteLine($"\n\t OrderID : {x.ID} | Price : {x.Price} | Book Name : {book.t} | UserID : {x.ID_User}");
                             }
                             Thread.Sleep(3000);
                             break;
                         case "4":
                             Console.Clear();
-                            Order? Oid = null;
                             int TempId;
 
                             while (true)
@@ -148,29 +156,36 @@ namespace _EF_Exam_Project_.mainPart
                                 if (!int.TryParse(input, out TempId) || TempId <= 0)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("\n\t\t Error! Please enter a valid positive number!\n");
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
                                     Console.ResetColor();
                                 }
-                                else
-                                {
-                                    break;
-                                }
+                                else break;
                             }
-                            Oid = orderService.ById(TempId);
 
-                            if (Oid != null)
+                            var orderById = orderService.ById(TempId);
+
+                            if (orderById != null)
                             {
-                                Console.WriteLine($"\n\t Order ID : {Oid.ID}, Price : {Oid.Price}");
+                                var orderBooks = orderBookService.Order_Book(orderById.ID);
+
+                                foreach (var ob in orderBooks)
+                                {
+                                    var book = bookService.ById(ob.ID_Book);
+                                    Console.WriteLine(
+                                        $"\n\t OrderID : {orderById.ID} | Time : {orderById.OrderDateTime} | Price : {orderById.Price} | Book Name : {book.Title} | UserID : {orderById.ID_User}"
+                                    );
+                                }
                             }
                             else
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\n\t\t Error! Order not found!\n");
+                                Console.WriteLine("\n\t\t Error ! Order not found ! \n");
                                 Console.ResetColor();
                             }
 
                             Thread.Sleep(3000);
                             break;
+
                         case "5": 
                             return;
                     }

@@ -142,6 +142,9 @@ namespace _EF_Exam_Project_.Migrations
                     b.Property<DateTime>("Delete")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ID_Book")
+                        .HasColumnType("int");
+
                     b.Property<int>("ID_User")
                         .HasColumnType("int");
 

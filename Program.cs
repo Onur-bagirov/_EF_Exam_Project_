@@ -158,24 +158,6 @@ namespace EF_Finally_Exam_Project_
 
                                 } while (string.IsNullOrEmpty(Up_Email));
 
-                                string AppCode;
-
-                                do
-                                {
-                                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                                    Console.Write("\n\t Enter app code : ");
-                                    Console.ResetColor();
-                                    AppCode = Console.ReadLine();
-
-                                    if(string.IsNullOrWhiteSpace(AppCode))
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.Write("\n\t\t Error ! Incorrect app password ! \n");
-                                        Console.ResetColor();
-                                    }
-
-                                } while (string.IsNullOrWhiteSpace(AppCode));
-
                                 string Up_Password;
 
                                 do
@@ -194,14 +176,14 @@ namespace EF_Finally_Exam_Project_
 
                                 } while (string.IsNullOrWhiteSpace(Up_Password) || Up_Password.Length < 6);
 
-                                Us.SignUp(Up_Name, Up_Surname, Up_Username, Up_Email, AppCode, Up_Password);
+                                Us.SignUp(Up_Name, Up_Surname, Up_Username, Up_Email,Up_Password);
                                 Thread.Sleep(2000);
                                 break;
 
                             case "3":
                                 Console.Clear();
                                 
-                                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                                Console.ForegroundColor = ConsoleColor.Cyan;
                                 Console.Write("\n\t\t Welcome to Forgot password Part \n\n");
                                 Console.ResetColor();
 
@@ -210,12 +192,7 @@ namespace EF_Finally_Exam_Project_
                                 Console.ResetColor();
                                 string R_Email = Console.ReadLine();
 
-                                Console.ForegroundColor = ConsoleColor.DarkGray;
-                                Console.Write("\n\t Enter app code : ");
-                                Console.ResetColor();
-                                string R_AppCode = Console.ReadLine();
-
-                                Us.ForgetPassword(R_Email, R_AppCode);
+                                Us.ForgetPassword(R_Email);
                                     break;
 
                             case "4":

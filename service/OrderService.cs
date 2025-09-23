@@ -1,5 +1,6 @@
 ﻿using _EF_Exam_Project_.context;
 using _EF_Exam_Project_.entities;
+using Microsoft.EntityFrameworkCore;
 namespace _EF_Exam_Project_.service
 {
     public class OrderService
@@ -54,7 +55,9 @@ namespace _EF_Exam_Project_.service
         }
         public Order ById(int id)
         {
-            return DataBase.Orders.FirstOrDefault(x => x.ID == id && !x.IsDeleted);
+            return DataBase.Orders
+                .Include(o => o.OrderBook)
+                .FirstOrDefault(x => x.ID == id && !x.IsDeleted);
         }
         public List<OrderBook> GetAll()
         {

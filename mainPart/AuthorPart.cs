@@ -203,6 +203,7 @@ namespace _EF_Exam_Project_.mainPart
                             Console.Clear();
                             break;
                         case "4":
+                            Console.Clear();
                             foreach (var x in service.GelAll())
                             {
                                 Console.WriteLine($"\n\t {x.ID} - {x.Name} {x.Surname}");
@@ -211,6 +212,7 @@ namespace _EF_Exam_Project_.mainPart
                             Console.Clear();
                             break;
                         case "5":
+                            Console.Clear();
                             int IdUpValue;
 
                             do

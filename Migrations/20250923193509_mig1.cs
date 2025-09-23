@@ -108,6 +108,7 @@ namespace _EF_Exam_Project_.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     OrderDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ID_User = table.Column<int>(type: "int", nullable: false),
+                    ID_Book = table.Column<int>(type: "int", nullable: false),
                     Create = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Update = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Delete = table.Column<DateTime>(type: "datetime2", nullable: false),
