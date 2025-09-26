@@ -33,7 +33,6 @@ namespace _EF_Exam_Project_.mainPart
 
                 try
                 {
-
                     switch (Choice)
                     {
                         case "1":
@@ -54,7 +53,6 @@ namespace _EF_Exam_Project_.mainPart
                                     BId = -1;
                                 }
                             } while (BId <= 0);                       
-
 
                             var Book = bookService.ById(BId);
 
@@ -115,7 +113,6 @@ namespace _EF_Exam_Project_.mainPart
                                     OId = -1;
                                 }
                             } while (OId <= 0);
-
 
                             bool CheckOR = orderService.Delete(OId);
 

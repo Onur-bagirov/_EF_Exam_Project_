@@ -78,7 +78,6 @@ namespace _EF_Exam_Project_.service
                     var NewUser = new User { Name = name, Surname = surname, Username = username, Email = email, Passsword = password, Create = DateTime.Now, Update = DateTime.Now, Delete = DateTime.MinValue, IsDeleted = false };
 
                     DataBase.Users.Add(NewUser);
-                    DataBase.SaveChanges();
 
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine($"\n\t\t Sign Up successful ! Welcome, {username} ! \n");
@@ -140,10 +139,6 @@ namespace _EF_Exam_Project_.service
                 Console.ResetColor();
             }
 
-            int Attempts = 3;
-
-            while (Attempts > 0)
-            {
                 Console.Write("\n\t Enter confirmation code : ");
                 string ForgetConfirmationCode = Console.ReadLine();
 
@@ -170,18 +165,12 @@ namespace _EF_Exam_Project_.service
                 }
                 else
                 {
-                    Attempts--;
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n\t\t  Unsuccessful try ! Try again ! \n");
                     Console.ResetColor();
                     Thread.Sleep(2000);
                 }
             }
-
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\n\t\t Error ! \n");
-            Console.ResetColor();
-            return false;
         }
     }
 }

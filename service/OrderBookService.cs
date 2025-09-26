@@ -23,7 +23,6 @@ namespace _EF_Exam_Project_.service
                 Console.ResetColor();
                 return false;
             }
-
             foreach (var i in bookid)
             {
                 var book = DataBase.Books.FirstOrDefault(x => x.ID == i && !x.IsDeleted);

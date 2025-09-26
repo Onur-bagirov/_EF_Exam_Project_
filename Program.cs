@@ -12,7 +12,6 @@ namespace EF_Finally_Exam_Project_
             {
                 BookShopDataBase Db = new BookShopDataBase();
                 UserService Us = new UserService(Db);
-
                 try
                 {
                     while (true)
@@ -122,16 +121,8 @@ namespace EF_Finally_Exam_Project_
                                         Console.Write("\n\t\t Error ! Username must have at least 5 characters ! \n");
                                         Console.ResetColor();
                                     }
-                                    else if (Db.Users.Any(u => u.Username == Up_Username && !u.IsDeleted))
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Red;
-                                        Console.Write("\n\t\t Error ! This username is already taken ! \n");
-                                        Console.ResetColor();
-                                        Up_Username = "";
-                                    }
 
                                 } while (string.IsNullOrEmpty(Up_Username));
-
 
                                 string Up_Email;
 
@@ -194,7 +185,6 @@ namespace EF_Finally_Exam_Project_
 
                                 Us.ForgetPassword(R_Email);
                                     break;
-
                             case "4":
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
@@ -202,7 +192,6 @@ namespace EF_Finally_Exam_Project_
                                 Console.ResetColor();
                                 Environment.Exit(0);
                                 break;
-
                             default:
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.Write("\n\t\t Error ! Incorrect choice ! \n");

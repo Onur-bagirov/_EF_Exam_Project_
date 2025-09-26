@@ -122,7 +122,6 @@ namespace _EF_Exam_Project_.mainPart
                                 }
                             } while (UpId <= 0);
 
-
                             var Update = service.ById(UpId);
 
                             if (Update != null)

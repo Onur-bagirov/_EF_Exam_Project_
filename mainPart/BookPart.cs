@@ -102,7 +102,6 @@ namespace _EF_Exam_Project_.mainPart
                             }
                             Thread.Sleep(1500);
                             break;
-
                         case "2":
                             int IdDel;
                             Console.Clear();
@@ -138,7 +137,6 @@ namespace _EF_Exam_Project_.mainPart
                             }
                             Thread.Sleep(1500);
                             break;
-
                         case "3":
                             int UpId;
                             Console.Clear();
@@ -201,7 +199,6 @@ namespace _EF_Exam_Project_.mainPart
                             }
                             Thread.Sleep(1500);
                             break;
-
                         case "4":
                             Console.Clear();
                             foreach (var x in service.GelAll())
@@ -210,7 +207,6 @@ namespace _EF_Exam_Project_.mainPart
                             }
                             Thread.Sleep(3000);
                             break;
-
                         case "5":
                             Console.Clear();
 
@@ -254,15 +250,12 @@ namespace _EF_Exam_Project_.mainPart
 
                                 break;
                             }
-
                             if (Id != null)
                             {
                                 Console.WriteLine($"\n\t {Id.ID} - {Id.Title}");
                             }
-
                             Thread.Sleep(3000);
                             break;
-
                         case "6":
                             return;
                     }

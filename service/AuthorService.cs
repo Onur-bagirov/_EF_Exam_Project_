@@ -16,10 +16,8 @@ namespace _EF_Exam_Project_.service
                 author.Create = DateTime.Now;
                 author.Update = DateTime.Now;
                 author.IsDeleted = false;
-
                 DataBase.Add(author);
                 DataBase.SaveChanges();
-
                 return true;
             }
             catch

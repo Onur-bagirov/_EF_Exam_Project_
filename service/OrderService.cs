@@ -22,7 +22,6 @@ namespace _EF_Exam_Project_.service
                 order.Update = DateTime.Now;
                 order.IsDeleted = false;
                 order.ID_User = user.ID;
-
                 DataBase.Orders.Add(order);
                 DataBase.SaveChanges();
                 return true;
