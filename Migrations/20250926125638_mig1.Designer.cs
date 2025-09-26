@@ -12,7 +12,7 @@ using _EF_Exam_Project_.context;
 namespace _EF_Exam_Project_.Migrations
 {
     [DbContext(typeof(BookShopDataBase))]
-    [Migration("20250923193509_mig1")]
+    [Migration("20250926125638_mig1")]
     partial class mig1
     {
         /// <inheritdoc />

@@ -134,10 +134,11 @@ namespace _EF_Exam_Project_.mainPart
                             Thread.Sleep(1500);
                             break;
                         case "3":
+                            Console.Clear();
                             foreach (var x in orderService.GetAll())
                             {
                                 var book = bookService.ById(x.ID_Book);
-                                Console.WriteLine($"\n\t OrderID : {x.ID} | Price : {x.Price} | Book Name : {book.t} | UserID : {x.ID_User}");
+                                Console.WriteLine($"\n\t OrderID : {x.ID} | Price : {x.Price} | Book Name : {book.Title} | UserID : {x.ID_User}");
                             }
                             Thread.Sleep(3000);
                             break;

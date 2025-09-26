@@ -204,7 +204,6 @@ namespace _EF_Exam_Project_.mainPart
 
                         case "4":
                             Console.Clear();
-
                             foreach (var x in service.GelAll())
                             {
                                 Console.WriteLine($"\n\t {x.ID} - {x.Title}");

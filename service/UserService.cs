@@ -20,6 +20,7 @@ namespace _EF_Exam_Project_.service
         }
         public User? SignIn(string username, string password)
         {
+            //var UsernameHash = HashCode.ToSha256(username.Trim());
             var user = DataBase.Users.FirstOrDefault(x => x.Username == username && x.Passsword == password);
 
             if (user != null)
@@ -38,6 +39,7 @@ namespace _EF_Exam_Project_.service
         public bool SignUp(string surname, string name, string username, string email,string password)
         {
             string Random_Code = RandomCode();
+            //string UsernameHash = HashCode.ToSha256(username.Trim());
 
             bool SentEmail = EmailService.Send
             (
@@ -109,6 +111,7 @@ namespace _EF_Exam_Project_.service
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\n\t\t User not found ! \n");
                 Console.ResetColor();
+                Thread.Sleep(2000);
                 return false;
             }
 
@@ -149,20 +152,29 @@ namespace _EF_Exam_Project_.service
                     Console.Write("\n\t Enter new password : ");
                     string NewPassword = Console.ReadLine();
 
-                    User.Passsword = NewPassword;
-                    DataBase.SaveChanges();
+                    Console.Write("\n\t Enter new password : ");
+                    string NewPassword_ = Console.ReadLine();
 
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("\n\t\t Password has been reset successfully ! \n");
-                    Console.ResetColor();
-                    return true;
+                    if(NewPassword == NewPassword_)
+                    {
+
+                        User.Passsword = NewPassword;
+                        DataBase.SaveChanges();
+
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("\n\t\t Password has been reset successfully ! \n");
+                        Console.ResetColor();
+                        Thread.Sleep(2000);
+                        return true;
+                    }
                 }
                 else
                 {
                     Attempts--;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\n\t\t Incorrect code ! Try again ! \n");
+                    Console.WriteLine("\n\t\t  Unsuccessful try ! Try again ! \n");
                     Console.ResetColor();
+                    Thread.Sleep(2000);
                 }
             }
 

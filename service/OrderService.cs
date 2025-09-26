@@ -55,9 +55,7 @@ namespace _EF_Exam_Project_.service
         }
         public Order ById(int id)
         {
-            return DataBase.Orders
-                .Include(o => o.OrderBook)
-                .FirstOrDefault(x => x.ID == id && !x.IsDeleted);
+            return DataBase.Orders.Include(o => o.OrderBook).FirstOrDefault(x => x.ID == id && !x.IsDeleted);
         }
         public List<OrderBook> GetAll()
         {
