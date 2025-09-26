@@ -8,7 +8,7 @@ namespace _EF_Exam_Project_.mainPart
         private static Random Code_Random = new Random();
         public static int Price()
         {
-            return Code_Random.Next(10, 21); 
+            return Code_Random.Next(1, 101); 
         }
         public static void OrderMenu(OrderService orderService, OrderBookService orderBookService, BookService bookService, User _user)
         {
@@ -135,7 +135,8 @@ namespace _EF_Exam_Project_.mainPart
                             foreach (var x in orderService.GetAll())
                             {
                                 var book = bookService.ById(x.ID_Book);
-                                Console.WriteLine($"\n\t OrderID : {x.ID} | Price : {x.Price} | Book Name : {book.Title} | UserID : {x.ID_User}");
+                                var order = orderService.ById(x.ID_Order);
+                                Console.WriteLine($"\n\t OrderID : {x.ID} | Price : {x.Price} | Book Name : {book.Title} | Time : {order.OrderDateTime} | UserID : {x.ID_User}");
                             }
                             Thread.Sleep(3000);
                             break;
@@ -170,7 +171,7 @@ namespace _EF_Exam_Project_.mainPart
                                 {
                                     var book = bookService.ById(ob.ID_Book);
                                     Console.WriteLine(
-                                        $"\n\t OrderID : {orderById.ID} | Time : {orderById.OrderDateTime} | Price : {orderById.Price} | Book Name : {book.Title} | UserID : {orderById.ID_User}"
+                                        $"\n\t OrderID : {orderById.ID} | Price : {orderById.Price} | Book Name : {book.Title} | Time : {orderById.OrderDateTime} | UserID : {orderById.ID_User}"
                                     );
                                 }
                             }

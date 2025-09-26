@@ -62,7 +62,7 @@ namespace _EF_Exam_Project_.mainPart
                                 Console.ResetColor();
                                 Surname = Console.ReadLine();
 
-                                if (Name.Length < 5)
+                                if (Surname.Length < 5)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write("\n\t\t Error ! Surname maust have at least 5 characters ! \n");
