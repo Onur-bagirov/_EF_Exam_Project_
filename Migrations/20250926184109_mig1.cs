@@ -54,7 +54,7 @@ namespace _EF_Exam_Project_.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Passsword = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Create = table.Column<DateTime>(type: "datetime2", nullable: false),

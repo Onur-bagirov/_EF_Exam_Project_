@@ -229,7 +229,8 @@ namespace _EF_Exam_Project_.mainPart
                                     Console.ResetColor();
                                     IdUpValue = -1;
                                 }
-                            } while (IdUpValue <= 0);
+                            } 
+                            while (IdUpValue <= 0);
 
                             var IdUp = service.ById(IdUpValue);
 

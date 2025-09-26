@@ -20,8 +20,10 @@ namespace _EF_Exam_Project_.service
         }
         public User? SignIn(string username, string password)
         {
-            //var UsernameHash = HashCode.ToSha256(username.Trim());
-            var user = DataBase.Users.FirstOrDefault(x => x.Username == username && x.Passsword == password);
+            var UsernameHash = HashCode.ToSha256(username.Trim());
+            var PasswordHash = HashCode.ToSha256(password);
+
+            var user = DataBase.Users.FirstOrDefault(x => x.Username == UsernameHash && x.Passsword == PasswordHash);
 
             if (user != null)
             {
@@ -39,7 +41,8 @@ namespace _EF_Exam_Project_.service
         public bool SignUp(string surname, string name, string username, string email,string password)
         {
             string Random_Code = RandomCode();
-            //string UsernameHash = HashCode.ToSha256(username.Trim());
+            string UsernameHash = HashCode.ToSha256(username.Trim());
+            var PasswordHash = HashCode.ToSha256(password);
 
             bool SentEmail = EmailService.Send
             (
@@ -75,9 +78,10 @@ namespace _EF_Exam_Project_.service
 
                 if (UPConfirmationCode == Random_Code)
                 {
-                    var NewUser = new User { Name = name, Surname = surname, Username = username, Email = email, Passsword = password, Create = DateTime.Now, Update = DateTime.Now, Delete = DateTime.MinValue, IsDeleted = false };
+                    var NewUser = new User { Name = name, Surname = surname, Username = UsernameHash, Email = email, Passsword = PasswordHash, Create = DateTime.Now, Update = DateTime.Now, Delete = DateTime.MinValue, IsDeleted = false };
 
                     DataBase.Users.Add(NewUser);
+                    DataBase.SaveChanges();
 
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine($"\n\t\t Sign Up successful ! Welcome, {username} ! \n");
@@ -139,21 +143,42 @@ namespace _EF_Exam_Project_.service
                 Console.ResetColor();
             }
 
-                Console.Write("\n\t Enter confirmation code : ");
-                string ForgetConfirmationCode = Console.ReadLine();
+            Console.Write("\n\t Enter confirmation code : ");
+            string ForgetConfirmationCode = Console.ReadLine();
+
+            while (true)
+            {
 
                 if (ForgetConfirmationCode == RandomCode_)
                 {
-                    Console.Write("\n\t Enter new password : ");
-                    string NewPassword = Console.ReadLine();
+                    string NewPassword;
 
-                    Console.Write("\n\t Enter new password : ");
+                    do
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.Write("\n\t Enter new password (Min 6 characters) : ");
+                        Console.ResetColor();
+                        NewPassword = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(NewPassword) || NewPassword.Length < 6)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write("\n\t\t Error ! Password must have at least 6 characters ! \n");
+                            Console.ResetColor();
+                        }
+
+                    } 
+                    while (string.IsNullOrWhiteSpace(NewPassword) || NewPassword.Length < 6);
+
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.Write("\n\t Confirm new password : ");
+                    Console.ResetColor();
                     string NewPassword_ = Console.ReadLine();
 
-                    if(NewPassword == NewPassword_)
+                    if (NewPassword == NewPassword_)
                     {
 
-                        User.Passsword = NewPassword;
+                        User.Passsword = HashCode.ToSha256(NewPassword);
                         DataBase.SaveChanges();
 
                         Console.ForegroundColor = ConsoleColor.DarkGreen;

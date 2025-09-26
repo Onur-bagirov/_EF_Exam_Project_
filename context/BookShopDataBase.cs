@@ -7,7 +7,7 @@ namespace _EF_Exam_Project_.context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=WINDOWS_11_ONUR\\MSSQLSERVER01;Initial Catalog=Llalalal;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;");
+            optionsBuilder.UseSqlServer("Data Source=WINDOWS_11_ONUR\\MSSQLSERVER01;Initial Catalog=MainDataBase;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;");
             base.OnConfiguring(optionsBuilder);
         }
         public DbSet<User> Users { get; set; }

@@ -7,7 +7,6 @@ namespace _EF_Exam_Project_.service
     public class OrderBookService : BaseService
     {
         private readonly BookShopDataBase DataBase;
-
         public OrderBookService(BookShopDataBase database) : base(database)
         {
             DataBase = database;

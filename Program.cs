@@ -86,7 +86,8 @@ namespace EF_Finally_Exam_Project_
                                         Console.ResetColor();
                                     }
 
-                                } while (Up_Name.Length < 3);
+                                } 
+                                while (Up_Name.Length < 3);
 
                                 string Up_Surname;
 
@@ -104,7 +105,8 @@ namespace EF_Finally_Exam_Project_
                                         Console.ResetColor();
                                     }
 
-                                } while (Up_Surname.Length < 5);
+                                } 
+                                while (Up_Surname.Length < 5);
 
                                 string Up_Username;
 
@@ -122,9 +124,11 @@ namespace EF_Finally_Exam_Project_
                                         Console.ResetColor();
                                     }
 
-                                } while (string.IsNullOrEmpty(Up_Username));
+                                }
+                                while (Up_Username.Length < 5);
 
                                 string Up_Email;
+                                bool CheckEmail;
 
                                 do
                                 {
@@ -138,16 +142,22 @@ namespace EF_Finally_Exam_Project_
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.Write("\n\t\t Error ! Incorrect email ! \n");
                                         Console.ResetColor();
+                                        CheckEmail = false;
                                     }
                                     else if (Db.Users.Any(u => u.Email == Up_Email && !u.IsDeleted))
                                     {
                                         Console.ForegroundColor = ConsoleColor.Red;
                                         Console.Write("\n\t\t Error ! This email is already registered ! \n");
                                         Console.ResetColor();
-                                        Up_Email = "";
+                                        CheckEmail = false;
+                                    }
+                                    else
+                                    {
+                                        CheckEmail = true;
                                     }
 
-                                } while (string.IsNullOrEmpty(Up_Email));
+                                } 
+                                while (!CheckEmail);
 
                                 string Up_Password;
 
@@ -165,7 +175,8 @@ namespace EF_Finally_Exam_Project_
                                         Console.ResetColor();
                                     }
 
-                                } while (string.IsNullOrWhiteSpace(Up_Password) || Up_Password.Length < 6);
+                                } 
+                                while (string.IsNullOrWhiteSpace(Up_Password) || Up_Password.Length < 6);
 
                                 Us.SignUp(Up_Name, Up_Surname, Up_Username, Up_Email,Up_Password);
                                 Thread.Sleep(2000);

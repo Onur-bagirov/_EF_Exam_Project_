@@ -11,7 +11,7 @@ namespace _EF_Exam_Project_.entitiesConfiguration
             builder.HasKey(x => x.ID);
             builder.Property(x => x.Name).HasMaxLength(20).IsRequired();
             builder.Property(x => x.Surname).HasMaxLength(20).IsRequired();
-            builder.Property(x => x.Username).HasMaxLength(20).IsRequired();
+            builder.Property(x => x.Username).HasMaxLength(200).IsRequired();
             builder.Property(x => x.Email).HasMaxLength(500).IsRequired();
             builder.Property(x => x.Passsword).HasMaxLength(500).IsRequired();
 

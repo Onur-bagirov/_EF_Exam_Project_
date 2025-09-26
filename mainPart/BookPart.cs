@@ -53,6 +53,7 @@ namespace _EF_Exam_Project_.mainPart
                             while (BTitle_.Length < 3);
 
                             int AId_;
+
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -70,6 +71,7 @@ namespace _EF_Exam_Project_.mainPart
                             } while (AId_ <= 0);
 
                             int CId_;
+
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -154,7 +156,8 @@ namespace _EF_Exam_Project_.mainPart
                                     Console.ResetColor();
                                     UpId = -1;
                                 }
-                            } while (UpId <= 0);
+                            } 
+                            while (UpId <= 0);
 
                             var Book = service.ById(UpId);
 

@@ -12,7 +12,7 @@ using _EF_Exam_Project_.context;
 namespace _EF_Exam_Project_.Migrations
 {
     [DbContext(typeof(BookShopDataBase))]
-    [Migration("20250926125638_mig1")]
+    [Migration("20250926184109_mig1")]
     partial class mig1
     {
         /// <inheritdoc />
@@ -259,8 +259,8 @@ namespace _EF_Exam_Project_.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("ID");
 
