@@ -16,10 +16,8 @@ namespace _EF_Exam_Project_.service
                 book.Create = DateTime.Now;
                 book.Update = DateTime.Now;
                 book.IsDeleted = false;
-
                 DataBase.Add(book);
                 DataBase.SaveChanges();
-
                 return true;
             }
             catch
@@ -40,7 +38,6 @@ namespace _EF_Exam_Project_.service
                 Book.IsDeleted = true;
                 Book.Delete = DateTime.Now;
                 DataBase.SaveChanges();
-
                 return true;
             }
         }
@@ -59,9 +56,7 @@ namespace _EF_Exam_Project_.service
                 Book.ID_Author = update.ID_Author;
                 Book.ID_Category = update.ID_Category;
                 Book.Update = DateTime.Now;
-
                 DataBase.SaveChanges();
-
                 return true;
             }
         }

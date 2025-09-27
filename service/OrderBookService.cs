@@ -39,19 +39,15 @@ namespace _EF_Exam_Project_.service
                         ID_Author = book.ID_Author,
                         ID_Category = book.ID_Category
                     };
-
                     DataBase.OrderBook.Add(orderBook);
                 }
             }
-
             DataBase.SaveChanges();
-
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("\n\t Books successfully added to the order !");
             Console.ResetColor();
             return true;
         }
-
         public List<OrderBook> Order_Book(int id)
         {
             return DataBase.OrderBook.Where(x => x.ID_Order == id && !x.IsDeleted).ToList();

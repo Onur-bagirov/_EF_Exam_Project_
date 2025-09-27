@@ -38,7 +38,6 @@ namespace _EF_Exam_Project_.service
                 Author.IsDeleted = true;
                 Author.Delete = DateTime.Now;
                 DataBase.SaveChanges();
-
                 return true;
             }
         }
@@ -56,7 +55,6 @@ namespace _EF_Exam_Project_.service
                 Author.Surname = update.Surname;
                 Author.Update = DateTime.Now;
                 DataBase.SaveChanges();
-
                 return true;
             }
         }

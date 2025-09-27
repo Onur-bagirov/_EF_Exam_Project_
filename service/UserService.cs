@@ -22,7 +22,6 @@ namespace _EF_Exam_Project_.service
         {
             var UsernameHash = HashCode.ToSha256(username.Trim());
             var PasswordHash = HashCode.ToSha256(password);
-
             var user = DataBase.Users.FirstOrDefault(x => x.Username == UsernameHash && x.Passsword == PasswordHash);
 
             if (user != null)
@@ -52,7 +51,6 @@ namespace _EF_Exam_Project_.service
                 subject: "Your Confirmation Code",
                 body: $"Your confirmation code is : {Random_Code}"
             );
-
             if (!SentEmail)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -61,7 +59,6 @@ namespace _EF_Exam_Project_.service
                 Thread.Sleep(2000);
                 return false;
             }
-
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("\n\t\t Confirmation code has been sent to your email ! \n");
             Console.ResetColor();
@@ -79,10 +76,8 @@ namespace _EF_Exam_Project_.service
                 if (UPConfirmationCode == Random_Code)
                 {
                     var NewUser = new User { Name = name, Surname = surname, Username = UsernameHash, Email = email, Passsword = PasswordHash, Create = DateTime.Now, Update = DateTime.Now, Delete = DateTime.MinValue, IsDeleted = false };
-
                     DataBase.Users.Add(NewUser);
                     DataBase.SaveChanges();
-
                     Console.ForegroundColor = ConsoleColor.DarkGreen;
                     Console.WriteLine($"\n\t\t Sign Up successful ! Welcome, {username} ! \n");
                     Console.ResetColor();
@@ -98,7 +93,6 @@ namespace _EF_Exam_Project_.service
                     Thread.Sleep(2000);
                 }
             }
-
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n\t\t Registration failed ! You entered incorrect code too many times ! \n");
             Console.ResetColor();
@@ -166,7 +160,6 @@ namespace _EF_Exam_Project_.service
                             Console.Write("\n\t\t Error ! Password must have at least 6 characters ! \n");
                             Console.ResetColor();
                         }
-
                     } 
                     while (string.IsNullOrWhiteSpace(NewPassword) || NewPassword.Length < 6);
 
@@ -180,7 +173,6 @@ namespace _EF_Exam_Project_.service
 
                         User.Passsword = HashCode.ToSha256(NewPassword);
                         DataBase.SaveChanges();
-
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.WriteLine("\n\t\t Password has been reset successfully ! \n");
                         Console.ResetColor();

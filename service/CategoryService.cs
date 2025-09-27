@@ -16,10 +16,8 @@ namespace _EF_Exam_Project_.service
                 category.Create = DateTime.Now;
                 category.Update = DateTime.Now;
                 category.IsDeleted = false;
-
                 DataBase.Add(category);
                 DataBase.SaveChanges();
-
                 return true;
             }
             catch
@@ -40,7 +38,6 @@ namespace _EF_Exam_Project_.service
                 Category.IsDeleted = true;
                 Category.Delete = DateTime.Now;
                 DataBase.SaveChanges();
-
                 return true;
             }
         }

@@ -36,7 +36,6 @@ namespace _EF_Exam_Project_.mainPart
                     switch (Choice)
                     {
                         case "1":
-                            int BId;
                             Console.Clear();
                             do
                             {
@@ -96,7 +95,6 @@ namespace _EF_Exam_Project_.mainPart
                             Thread.Sleep(1500);
                             break;
                         case "2":
-                            int OId;
                             Console.Clear();
                             do
                             {
@@ -184,7 +182,6 @@ namespace _EF_Exam_Project_.mainPart
 
                             Thread.Sleep(3000);
                             break;
-
                         case "5": 
                             return;
                     }

@@ -34,7 +34,6 @@ namespace _EF_Exam_Project_.mainPart
                     switch (Choice)
                     {
                         case "1":
-                            string Name;
                             Console.Clear();
                             do
                             {
@@ -69,7 +68,6 @@ namespace _EF_Exam_Project_.mainPart
                             Thread.Sleep(1500);
                             break;
                         case "2":
-                            int Id;
                             Console.Clear();
                             do
                             {

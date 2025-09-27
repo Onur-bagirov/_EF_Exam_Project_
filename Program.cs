@@ -62,7 +62,6 @@ namespace EF_Finally_Exam_Project_
 
                                 Thread.Sleep(2000);
                                 break;
-
                             case "2":
                                 Console.Clear();
 
@@ -85,7 +84,6 @@ namespace EF_Finally_Exam_Project_
                                         Console.Write("\n\t\t Error ! Name must have at least 3 characters ! \n");
                                         Console.ResetColor();
                                     }
-
                                 } 
                                 while (Up_Name.Length < 3);
 
@@ -123,7 +121,6 @@ namespace EF_Finally_Exam_Project_
                                         Console.Write("\n\t\t Error ! Username must have at least 5 characters ! \n");
                                         Console.ResetColor();
                                     }
-
                                 }
                                 while (Up_Username.Length < 5);
 
@@ -155,7 +152,6 @@ namespace EF_Finally_Exam_Project_
                                     {
                                         CheckEmail = true;
                                     }
-
                                 } 
                                 while (!CheckEmail);
 
@@ -174,14 +170,12 @@ namespace EF_Finally_Exam_Project_
                                         Console.Write("\n\t\t Error ! Password must have at least 6 characters ! \n");
                                         Console.ResetColor();
                                     }
-
                                 } 
                                 while (string.IsNullOrWhiteSpace(Up_Password) || Up_Password.Length < 6);
 
                                 Us.SignUp(Up_Name, Up_Surname, Up_Username, Up_Email,Up_Password);
                                 Thread.Sleep(2000);
                                 break;
-
                             case "3":
                                 Console.Clear();
                                 
