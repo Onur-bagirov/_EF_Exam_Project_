@@ -9,7 +9,7 @@ namespace _EF_Exam_Project_.entitiesConfiguration
         {
             builder.ToTable("Book");
             builder.HasKey(x => x.ID);
-            builder.Property(x => x.Title).HasMaxLength(50).IsRequired();
+            builder.Property(x => x.Title).HasMaxLength(100).IsRequired();
             builder.Property(x => x.Price).IsRequired();
             builder.Property(x => x.ID_Author).IsRequired();
             builder.Property(x => x.ID_Category).IsRequired();

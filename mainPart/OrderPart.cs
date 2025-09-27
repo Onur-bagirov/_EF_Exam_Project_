@@ -37,6 +37,9 @@ namespace _EF_Exam_Project_.mainPart
                     {
                         case "1":
                             Console.Clear();
+
+                            int BId;
+
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -96,6 +99,9 @@ namespace _EF_Exam_Project_.mainPart
                             break;
                         case "2":
                             Console.Clear();
+
+                            int OId; 
+
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -140,6 +146,7 @@ namespace _EF_Exam_Project_.mainPart
                             break;
                         case "4":
                             Console.Clear();
+
                             int TempId;
 
                             while (true)
@@ -156,7 +163,10 @@ namespace _EF_Exam_Project_.mainPart
                                     Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
                                     Console.ResetColor();
                                 }
-                                else break;
+                                else
+                                {
+                                    break;
+                                }
                             }
 
                             var orderById = orderService.ById(TempId);

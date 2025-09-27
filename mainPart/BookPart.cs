@@ -140,8 +140,10 @@ namespace _EF_Exam_Project_.mainPart
                             Thread.Sleep(1500);
                             break;
                         case "3":
-                            int UpId;
                             Console.Clear();
+
+                            int UpId;
+
                             do
                             {
                                 Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -204,6 +206,7 @@ namespace _EF_Exam_Project_.mainPart
                             break;
                         case "4":
                             Console.Clear();
+
                             foreach (var x in service.GelAll())
                             {
                                 Console.WriteLine($"\n\t {x.ID} - {x.Title}");

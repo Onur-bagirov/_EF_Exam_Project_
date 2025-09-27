@@ -59,6 +59,7 @@ namespace _EF_Exam_Project_.service
                 Thread.Sleep(2000);
                 return false;
             }
+
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("\n\t\t Confirmation code has been sent to your email ! \n");
             Console.ResetColor();
@@ -93,6 +94,7 @@ namespace _EF_Exam_Project_.service
                     Thread.Sleep(2000);
                 }
             }
+
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("\n\t\t Registration failed ! You entered incorrect code too many times ! \n");
             Console.ResetColor();

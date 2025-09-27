@@ -9,7 +9,7 @@ namespace _EF_Exam_Project_.entitiesConfiguration
         {
             builder.ToTable("Category");
             builder.HasKey(x => x.ID);
-            builder.Property(x => x.Name).HasMaxLength(20).IsRequired();
+            builder.Property(x => x.Name).HasMaxLength(100).IsRequired();
 
             builder.HasMany(x => x.Book).WithOne(x => x.Category).HasForeignKey(x => x.ID_Category);
         }

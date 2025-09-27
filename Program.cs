@@ -189,7 +189,7 @@ namespace EF_Finally_Exam_Project_
                                 string R_Email = Console.ReadLine();
 
                                 Us.ForgetPassword(R_Email);
-                                    break;
+                                break;
                             case "4":
                                 Console.Clear();
                                 Console.ForegroundColor = ConsoleColor.Red;
