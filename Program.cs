@@ -55,12 +55,9 @@ namespace EF_Finally_Exam_Project_
                                 if (user != null)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Green;
-                                    Console.WriteLine($"\n\t Welcome {user.Username} !\n");
                                     Console.ResetColor();
                                     MainPart.MainStart(user);
                                 }
-
-                                Thread.Sleep(2000);
                                 break;
                             case "2":
                                 Console.Clear();
