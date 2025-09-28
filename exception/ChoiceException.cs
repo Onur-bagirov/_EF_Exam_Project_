@@ -3,7 +3,7 @@
     public class ChoiceException : System.Exception
     {
         public ChoiceException()
-             : base("Incorrect choice !")
+             : base("\n\t\t Incorrect choice ! \n\n")
         {
         }
     }

@@ -27,7 +27,9 @@ namespace _EF_Exam_Project_.mainPart
                 Console.WriteLine("\n\t Back            : 5");
                 Console.Write("\n\n\n");
 
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("\n\t Enter choice (1/2/3/4/5) : ");
+                Console.ResetColor();
                 string Choice = Console.ReadLine();
                 Console.Write("\n\n");
 
@@ -136,11 +138,15 @@ namespace _EF_Exam_Project_.mainPart
                             break;
                         case "3":
                             Console.Clear();
+
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.WriteLine("\n\t All Categories : ");
+                            Console.ResetColor();
+
                             foreach (var x in orderService.GetAll())
                             {
                                 var book = bookService.ById(x.ID_Book);
-                                var order = orderService.ById(x.ID_Order);
-                                Console.WriteLine($"\n\t OrderID : {x.ID} | Price : {x.Price} | Book Name : {book.Title} | Time : {order.OrderDateTime} | UserID : {x.ID_User}");
+                                Console.WriteLine($"\n\t OrderID : {x.ID} | Price : {x.Price} | Book Name : {book.Title} | UserID : {x.ID_User}");
                             }
                             Thread.Sleep(3000);
                             break;

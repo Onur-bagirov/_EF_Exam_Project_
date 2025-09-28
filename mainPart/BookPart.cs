@@ -23,7 +23,9 @@ namespace _EF_Exam_Project_.mainPart
                 Console.WriteLine("\n\t Back           : 6");
                 Console.Write("\n\n\n");
 
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("\n\t Enter choice (1/2/3/4/5/6) : ");
+                Console.ResetColor();
                 string Choice = Console.ReadLine();
                 Console.Write("\n\n");
 
@@ -206,6 +208,10 @@ namespace _EF_Exam_Project_.mainPart
                             break;
                         case "4":
                             Console.Clear();
+
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.WriteLine("\n\t All Categories : ");
+                            Console.ResetColor();
 
                             foreach (var x in service.GelAll())
                             {

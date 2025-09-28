@@ -23,7 +23,9 @@ namespace _EF_Exam_Project_.mainPart
                 Console.WriteLine("\n\t Back             : 6");
                 Console.Write("\n\n\n");
 
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("\n\t Enter choice (1/2/3/4/5/6) : ");
+                Console.ResetColor();
                 string Choice = Console.ReadLine();
                 Console.Write("\n\n");
 
@@ -189,7 +191,7 @@ namespace _EF_Exam_Project_.mainPart
                                 else
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.Write("\n\t\t Error updating author !");
+                                    Console.Write("\n\t\t Error updating author ! \n");
                                     Console.ResetColor();
                                 }
                             }
@@ -204,6 +206,11 @@ namespace _EF_Exam_Project_.mainPart
                             break;
                         case "4":
                             Console.Clear();
+
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.WriteLine("\n\t All Categories : ");
+                            Console.ResetColor();
+
                             foreach (var x in service.GelAll())
                             {
                                 Console.WriteLine($"\n\t {x.ID} - {x.Name} {x.Surname}");
@@ -225,7 +232,7 @@ namespace _EF_Exam_Project_.mainPart
                                 if (!int.TryParse(input, out IdUpValue) || IdUpValue <= 0)
                                 {
                                     Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.WriteLine("\n\t\t Error! Please enter a valid positive number ! \n");
+                                    Console.WriteLine("\n\t\t Error ! Please enter a valid positive number ! \n");
                                     Console.ResetColor();
                                     IdUpValue = -1;
                                 }

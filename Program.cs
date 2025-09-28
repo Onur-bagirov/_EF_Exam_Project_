@@ -28,7 +28,9 @@ namespace EF_Finally_Exam_Project_
                         Console.Write("\n\t Exit            : 4");
                         Console.Write("\n\n\n");
 
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
                         Console.Write("\n\t Enter choice(1/2/3) : ");
+                        Console.ResetColor();
                         string MainChoice = Console.ReadLine();
 
                         switch (MainChoice)

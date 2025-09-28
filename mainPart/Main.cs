@@ -30,7 +30,9 @@ namespace _EF_Exam_Project_.mainPart
                 Console.WriteLine("\n\t Exit              : 5");
                 Console.Write("\n\n\n");
 
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("\n\t Enter choice (1/2/3/4/5) : ");
+                Console.ResetColor();
                 string Choice = Console.ReadLine();
 
                 try
@@ -58,7 +60,7 @@ namespace _EF_Exam_Project_.mainPart
                             break;
                         default:
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write("\n\t\t Error ! Incorrect choice !c\n");
+                            Console.Write("\n\t\t Error ! Incorrect choice ! \n");
                             Console.ResetColor();
                             Thread.Sleep(2000);
                             break;

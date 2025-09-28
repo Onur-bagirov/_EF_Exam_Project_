@@ -3,7 +3,7 @@
     public class EmailException : System.Exception
     {
         public EmailException()
-          : base("An error occurred while sending the email !")
+          : base("\n\t\t An error occurred while sending the email ! \n\n")
         {
         }
     }

@@ -58,7 +58,7 @@ namespace _EF_Exam_Project_.service
         }
         public List<OrderBook> GetAll()
         {
-            return DataBase.OrderBook.Where(x => !x.IsDeleted).ToList();
+            return DataBase.OrderBook.Include(ob => ob.Book).Include(ob => ob.Order).Where(ob => !ob.IsDeleted).ToList();
         }
     }
 }
